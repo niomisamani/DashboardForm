@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Data Collection Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .product-selector {
+            background: #f8f9fa;
+            padding: 25px 30px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #495057;
+            font-size: 14px;
+        }
+        
+        select, input[type="text"], input[type="number"], input[type="date"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        select:focus, input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .subsection {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .subsection-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+        
+        .radio-group input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: block;
+            margin: 30px auto 0;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .required {
+            color: #dc3545;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .info-text {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Product Data Collection Form</h1>
+            <p>Complete this form for each product to populate Layer 2 and Layer 1 dashboards</p>
+        </div>
+        
+        <div class="product-selector">
+            <div class="form-group">
+                <label>Select Product <span class="required">*</span></label>
+                <select id="productSelect" required>
+                    <option value="">-- Select a Product --</option>
+                    <option value="in-clinic-education">In-Clinic Education</option>
+                    <option value="diap-esapa-education">dIAP, eSAPA, Education Platform</option>
+                    <option value="growth-clinic">Growth Clinic (RFA System)</option>
+                    <option value="interactive-tutoring">Interactive Tutoring</option>
+                    <option value="vaccination-reminder">Vaccination Reminder System</option>
+                    <option value="patient-education">Patient Education System</option>
+                    <option value="school-screening">School Screening System</option>
+                    <option value="ticketing-system">Ticketing System</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Product Owner 1</label>
+                    <input type="text" placeholder="Owner 1 Name">
+                </div>
+                <div class="form-group">
+                    <label>Product Owner 2</label>
+                    <input type="text" placeholder="Owner 2 Name">
+                </div>
+                <div class="form-group">
+                    <label>Report Date <span class="required">*</span></label>
+                    <input type="date" required>
+                </div>
+            </div>
+        </div>
+        
+        <form class="form-content">
+            <!-- SECTION 1: SERVICE UPTIME -->
+            <div class="section">
+                <h2 class="section-title">1. Service Uptime & Availability</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Uptime Metrics (Last 24 Hours)</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Service Uptime % (Last 24 Hours) <span class="required">*</span></label>
+                            <input type="number" step="0.01" min="0" max="100" placeholder="e.g., 99.95" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Service Uptime % (Current Month) <span class="required">*</span></label>
+                            <input type="number" step="0.01" min="0" max="100" placeholder="e.g., 99.8" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Incidents Leading to Downtime (This Month)</label>
+                        <textarea placeholder="List all incidents with date, duration, and cause"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 2: TESTING COVERAGE -->
+            <div class="section">
+                <h2 class="section-title">2. Testing Coverage & Automation</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Automated Testing Status</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Automated Test Coverage - User Functionality</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="auto-test-user" value="yes"> YES</label>
+                                <label><input type="radio" name="auto-test-user" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Automated Test Coverage - API Endpoints</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="auto-test-api" value="yes"> YES</label>
+                                <label><input type="radio" name="auto-test-api" value="no"> NO</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Test Coverage Last Reviewed Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Automated Tests Execute Every 30 Minutes</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="auto-test-30min" value="yes"> YES</label>
+                                <label><input type="radio" name="auto-test-30min" value="no"> NO</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Automated Test Failures Count (Last 24 Hours)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Automated Test Latency Issues Count</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Test Failures Converted to Tickets</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Manual Testing Status</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Manual Testing Checklists Updated Daily</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="manual-checklist-update" value="yes"> YES</label>
+                                <label><input type="radio" name="manual-checklist-update" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Manual Testing Checklists Run Daily</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="manual-checklist-run" value="yes"> YES</label>
+                                <label><input type="radio" name="manual-checklist-run" value="no"> NO</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Performance Testing</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Performance Testing Done Quarterly - Last Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Performance Test Results Documented</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="perf-test-doc" value="yes"> YES</label>
+                                <label><input type="radio" name="perf-test-doc" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Performance Recommendations Raised as Tickets</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 3: BUG DETECTION -->
+            <div class="section">
+                <h2 class="section-title">3. Bug Detection & Resolution</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Bug Metrics</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Bugs Caught in Testing</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Bugs Found in Production</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Bugs Reviewed for Test Coverage</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Bug Fix Turnaround Time - Critical (Hours)</label>
+                            <input type="number" min="0" step="0.5" placeholder="e.g., 2">
+                        </div>
+                        <div class="form-group">
+                            <label>Bug Fix Turnaround Time - High (Days)</label>
+                            <input type="number" min="0" step="0.5" placeholder="e.g., 1">
+                        </div>
+                        <div class="form-group">
+                            <label>Bug Fix Deadline Missed Count</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Regression Bugs Count</label>
+                            <input type="number" min="0" placeholder="0">
+                            <p class="info-text">Previously resolved issues that reappeared</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Issues Reported Again (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Regression Bugs - Details</label>
+                        <textarea placeholder="List ticket IDs and brief description"></textarea>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Issue Detection Analysis</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Issues Caught by Monitoring</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Issues Reported by Users</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>User-Reported Errors Count (This Month)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Issues Not Caught by Monitoring - Investigation Status</label>
+                        <textarea placeholder="List issues and current investigation status"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 4: CAPACITY MONITORING -->
+            <div class="section">
+                <h2 class="section-title">4. Capacity Monitoring & Performance</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Real-Time Monitoring Status</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Real-Time Capacity Dashboard Operational</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="dashboard-op" value="yes"> YES</label>
+                                <label><input type="radio" name="dashboard-op" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>User-Level Error Rates from Infrastructure</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>User-Level Error Rates from Automated Tests</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Capacity Threshold Alerts</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Capacity Threshold Alerts at 70% Configured</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="alert-70" value="yes"> YES</label>
+                                <label><input type="radio" name="alert-70" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Capacity Threshold Alerts at 85% Configured</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="alert-85" value="yes"> YES</label>
+                                <label><input type="radio" name="alert-85" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Alerts Tested Monthly - Last Date</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Response Procedures Documented</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="response-doc" value="yes"> YES</label>
+                                <label><input type="radio" name="response-doc" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Response Procedures Followed</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="response-followed" value="yes"> YES</label>
+                                <label><input type="radio" name="response-followed" value="no"> NO</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Current Capacity Status</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Current Peak Load (%)</label>
+                            <input type="number" min="0" max="100" step="0.1" placeholder="e.g., 65.5">
+                        </div>
+                        <div class="form-group">
+                            <label>Projected Peak Load for Next Month (%)</label>
+                            <input type="number" min="0" max="100" step="0.1" placeholder="e.g., 75.0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Timeline for Increasing Capacity by 25% Known</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="capacity-timeline" value="yes"> YES</label>
+                                <label><input type="radio" name="capacity-timeline" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>If YES, Timeline Details</label>
+                            <input type="text" placeholder="e.g., Q2 2024, 2 weeks">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 5: DOCUMENTATION -->
+            <div class="section">
+                <h2 class="section-title">5. Documentation Status</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Product Documentation</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Product Document Complete</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="prod-doc" value="yes"> YES</label>
+                                <label><input type="radio" name="prod-doc" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Product Document Version</label>
+                            <input type="text" placeholder="e.g., v2.3">
+                        </div>
+                        <div class="form-group">
+                            <label>Product Document Last Update Date</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Technical Documentation</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>User Journey Flow Charts Current</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="user-journey" value="yes"> YES</label>
+                                <label><input type="radio" name="user-journey" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Version</label>
+                            <input type="text" placeholder="e.g., v1.5">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Update Date</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>System Architecture Diagram Current</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="sys-arch" value="yes"> YES</label>
+                                <label><input type="radio" name="sys-arch" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Version</label>
+                            <input type="text" placeholder="e.g., v1.2">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Update Date</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Code Documentation Complete</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="code-doc" value="yes"> YES</label>
+                                <label><input type="radio" name="code-doc" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Version</label>
+                            <input type="text" placeholder="e.g., v3.1">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Update Date</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Enhancements/Modifications Without Documentation (Count)</label>
+                        <input type="number" min="0" placeholder="0">
+                        <p class="info-text">Recent changes not yet documented</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 6: TICKET MANAGEMENT -->
+            <div class="section">
+                <h2 class="section-title">6. Ticket Management & Delivery</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Ticket Resolution Metrics (Last 30 Days)</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Urgent Tickets NOT Resolved by Deadline</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Regular Tickets NOT Resolved by Deadline</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tickets with Unreasonable Deadlines Not Renegotiated Same Day</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Tickets with Resolution Times Higher Than Expected</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Ticket Quality Metrics (Last Quarter)</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tickets NOT Estimated Correctly</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Tickets NOT Completed on Time</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Completion Rate (%)</label>
+                            <input type="number" min="0" max="100" step="0.1" placeholder="e.g., 87.5">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tickets Returned/Failed Testing</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Tickets Returned More Than 2 Times</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Tickets with >4 Man Days Estimate</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>High-Return Tickets Details</label>
+                        <textarea placeholder="List ticket IDs returned >2 times with reasons"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 7: SECURITY -->
+            <div class="section">
+                <h2 class="section-title">7. Security Metrics</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Security Audits & Scans</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Vulnerability Study Done - Last Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Security Audit Done This Quarter</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="sec-audit" value="yes"> YES</label>
+                                <label><input type="radio" name="sec-audit" value="no"> NO</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Vulnerability Scans Done Weekly - Last Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Code Vulnerability Scan Done - Last Date</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Vulnerabilities Found (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Code Vulnerabilities Found (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Code Vulnerabilities Fixed (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Vulnerabilities Status Details</label>
+                        <textarea placeholder="List vulnerability IDs, severity, and current status"></textarea>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Access Control</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Access Control Documented for Database Attributes</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="access-doc" value="yes"> YES</label>
+                                <label><input type="radio" name="access-doc" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Access Control Implemented via Private Keys</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="access-keys" value="yes"> YES</label>
+                                <label><input type="radio" name="access-keys" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Access Control Review Done Monthly - Last Date</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Weekly Credential Change Compliance</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="cred-change" value="yes"> YES</label>
+                                <label><input type="radio" name="cred-change" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Access Grants This Week (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Access Revocations This Week (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Access Grants/Revocations List</label>
+                        <textarea placeholder="List user names, access type, and date"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 8: SCALABILITY & COST -->
+            <div class="section">
+                <h2 class="section-title">8. Scalability & Cost Analysis</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Scalability Metrics</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Scalability Audit Done This Quarter</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="scale-audit" value="yes"> YES</label>
+                                <label><input type="radio" name="scale-audit" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Scalability Analysis Done - Last Date</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Cost per Transaction for Users with >20% Load</label>
+                        <input type="text" placeholder="e.g., $0.05 per transaction">
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Cost Metrics (This Month)</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Infrastructure Costs ($)</label>
+                            <input type="number" min="0" step="0.01" placeholder="e.g., 5000">
+                        </div>
+                        <div class="form-group">
+                            <label>People Costs ($)</label>
+                            <input type="number" min="0" step="0.01" placeholder="e.g., 15000">
+                        </div>
+                        <div class="form-group">
+                            <label>Tools Costs ($)</label>
+                            <input type="number" min="0" step="0.01" placeholder="e.g., 2000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Engineering Hours + Salary Costs (Quarterly) ($)</label>
+                        <input type="number" min="0" step="0.01" placeholder="e.g., 45000">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 9: TEAM CAPACITY -->
+            <div class="section">
+                <h2 class="section-title">9. Team Capacity & Skills</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Team Adequacy Assessment</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Team Has Adequate Skills for Each Required Type</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="team-skills" value="yes"> YES</label>
+                                <label><input type="radio" name="team-skills" value="no"> NO</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Team Has Adequate Capacity for Current Load - Development</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="capacity-dev" value="yes"> YES</label>
+                                <label><input type="radio" name="capacity-dev" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Team Has Adequate Capacity for Current Load - Engineering</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="capacity-eng" value="yes"> YES</label>
+                                <label><input type="radio" name="capacity-eng" value="no"> NO</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Team Has Adequate Capacity for Current Load - Testing</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="capacity-test" value="yes"> YES</label>
+                                <label><input type="radio" name="capacity-test" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Team Has Adequate Capacity for Current Load - Infrastructure</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="capacity-infra" value="yes"> YES</label>
+                                <label><input type="radio" name="capacity-infra" value="no"> NO</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Team Has Adequate Capacity for 2X Load - Development</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="capacity-2x-dev" value="yes"> YES</label>
+                                <label><input type="radio" name="capacity-2x-dev" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Team Has Adequate Capacity for 2X Load - Engineering</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="capacity-2x-eng" value="yes"> YES</label>
+                                <label><input type="radio" name="capacity-2x-eng" value="no"> NO</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Team Has Adequate Capacity for 2X Load - Testing</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="capacity-2x-test" value="yes"> YES</label>
+                                <label><input type="radio" name="capacity-2x-test" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Team Has Adequate Capacity for 2X Load - Infrastructure</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="capacity-2x-infra" value="yes"> YES</label>
+                                <label><input type="radio" name="capacity-2x-infra" value="no"> NO</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Team Members Identified for Training/Replacement (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Team Members Details (Names & Reason)</label>
+                        <textarea placeholder="List names and reasons for training/replacement needs"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 10: NEW DEVELOPMENT -->
+            <div class="section">
+                <h2 class="section-title">10. New Development & Enhancements</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Requirements Documentation</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Complete PRD (Product Requirements Document) Available</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="prd-complete" value="yes"> YES</label>
+                                <label><input type="radio" name="prd-complete" value="no"> NO</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Technical Design Document Complete</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="tech-design" value="yes"> YES</label>
+                                <label><input type="radio" name="tech-design" value="no"> NO</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Features Without Complete PRD (List)</label>
+                        <textarea placeholder="List feature names or IDs"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Features Without Technical Design Document (List)</label>
+                        <textarea placeholder="List feature names or IDs"></textarea>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Development Milestones</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Milestones with >2 Weeks Deadline (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Milestones with >2 Weeks Deadline (List)</label>
+                        <textarea placeholder="List milestone names and deadlines"></textarea>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Performance Status (Last 12 Weeks)</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>On-Time Milestones (%)</label>
+                            <input type="number" min="0" max="100" step="0.1" placeholder="e.g., 85.5">
+                        </div>
+                        <div class="form-group">
+                            <label>Delayed Milestones (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Delayed Milestones Details (List with Reasons)</label>
+                        <textarea placeholder="List milestone names, delays, and reasons"></textarea>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Go-Live Readiness</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Features Going Live Without Complete Testing Checklist (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Features Going Live Without Adding to Daily Testing (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Features Going Live Without Complete Code Documentation (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Go-Live Readiness Issues (List)</label>
+                        <textarea placeholder="List features with readiness issues"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 11: INFRASTRUCTURE METRICS -->
+            <div class="section">
+                <h2 class="section-title">11. Infrastructure Performance Metrics</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Server/Network Monitoring (Last 24 Hours)</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Server Uptime Per Instance (%)</label>
+                            <input type="number" min="0" max="100" step="0.01" placeholder="e.g., 99.98">
+                        </div>
+                        <div class="form-group">
+                            <label>Network Uptime % (Current Month)</label>
+                            <input type="number" min="0" max="100" step="0.01" placeholder="e.g., 99.9">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>User Latency - Delayed Responses (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Load Balancer Unserviced Redirects (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Load Balancer Unserviced Redirects (%)</label>
+                            <input type="number" min="0" max="100" step="0.01" placeholder="e.g., 0.05">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Database Failed Queries (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>API Gateway Fail Rates (%)</label>
+                            <input type="number" min="0" max="100" step="0.01" placeholder="e.g., 0.1">
+                        </div>
+                        <div class="form-group">
+                            <label>API Gateway Unacceptable Response Time Rates (%)</label>
+                            <input type="number" min="0" max="100" step="0.01" placeholder="e.g., 0.5">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Infrastructure Error Analysis</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Unacceptable Failure Rates (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Unacceptable Failure Rates Fixed Within Timeline (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Unacceptable Latency Rates (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Unacceptable Latency Rates Fixed Within Timeline (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Capacity Utilization (Daily Peak)</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Peak CPU Utilization (%)</label>
+                            <input type="number" min="0" max="100" step="0.1" placeholder="e.g., 65.5">
+                        </div>
+                        <div class="form-group">
+                            <label>Peak Memory Utilization (%)</label>
+                            <input type="number" min="0" max="100" step="0.1" placeholder="e.g., 72.3">
+                        </div>
+                        <div class="form-group">
+                            <label>Peak Storage Utilization (%)</label>
+                            <input type="number" min="0" max="100" step="0.1" placeholder="e.g., 58.9">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Peak Bandwidth Utilization (%)</label>
+                            <input type="number" min="0" max="100" step="0.1" placeholder="e.g., 45.2">
+                        </div>
+                        <div class="form-group">
+                            <label>Failed DB Queries at Peak (Count)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Upgrade/Downgrade Decisions Made (Last 24 Hours)</label>
+                            <input type="number" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Upgrade/Downgrade Decisions List</label>
+                        <textarea placeholder="List decisions made with server/service names"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 12: ADDITIONAL NOTES -->
+            <div class="section">
+                <h2 class="section-title">12. Additional Notes & Comments</h2>
+                <div class="form-group">
+                    <label>Additional Information or Concerns</label>
+                    <textarea placeholder="Any additional information, concerns, or context relevant to this report"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Action Items for Next Period</label>
+                    <textarea placeholder="List key action items and priorities for the next reporting period"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Blockers or Dependencies</label>
+                    <textarea placeholder="List any blockers or dependencies affecting product performance or development"></textarea>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-submit">📤 Submit Product Report</button>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('productSelect').addEventListener('change', function() {
+            if(this.value) {
+                document.querySelector('.form-content').style.display = 'block';
+            }
+        });
+        
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const productName = document.getElementById('productSelect').options[document.getElementById('productSelect').selectedIndex].text;
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            console.log('Form Data Collected:', data);
+            
+            // Show success message
+            alert(`✅ Form submitted successfully for ${productName}!\n\nData will be processed and sent to:\n• Layer 2 Dashboards (Detailed Metrics)\n• Layer 1 Dashboards (Executive Summary)\n\nThank you for completing the report.`);
+            
+            // In a real application, this would send data to a server
+            // fetch('/api/submit-product-data', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(data)
+            // });
+        });
+    </script>
+</body>
+</html>
+
+
